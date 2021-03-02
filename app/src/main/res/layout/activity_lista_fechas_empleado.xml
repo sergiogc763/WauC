@@ -10,15 +10,16 @@
 
     <TextView
         android:id="@+id/tvTituloListaFechas"
-        android:layout_width="338dp"
-        android:layout_height="47dp"
+        android:layout_width="340dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/estilo_titulo"
         android:fontFamily="@font/acetone"
         android:paddingLeft="11dp"
         android:paddingTop="7dp"
-        android:text="Fechas de movimientos"
+        android:paddingRight="11dp"
+        android:text="@string/tvTituloListaFechas"
         android:textAllCaps="true"
         android:textColor="#558b2F"
         android:textSize="36sp"
@@ -38,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloListaFechas" />" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloListaFechas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

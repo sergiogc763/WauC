@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recurso_icono_login" />
+        app:srcCompat="@drawable/recurso_icono_login"
+        tools:ignore="ContentDescription"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout6"
@@ -35,12 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/estilo_editext"
-            android:drawableLeft="@drawable/recurso_ic_dni"
+            android:drawableStart="@drawable/recurso_ic_dni"
+            android:drawablePadding="5dp"
             android:fontFamily="sans-serif-medium"
             android:freezesText="false"
-            android:hint="Introduzca DNI"
+            android:hint="@string/etDniLogin"
             android:inputType="textShortMessage"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:singleLine="true"
             android:textAllCaps="false" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,12 +66,13 @@
             android:layout_height="50dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_pass"
+            android:drawablePadding="5dp"
             android:fontFamily="sans-serif-medium"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:hint="@string/etPassLogin"
             android:imeOptions="actionSend"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:password="true"
+            android:paddingRight="10dp"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +85,7 @@
         android:layout_marginEnd="138dp"
         android:background="@drawable/estilo_boton"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Entrar"
+        android:text="@string/btnEntrar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:checked="false"
-        android:text="Recordar DNI"
+        android:text="@string/checkRecordatorio"
         app:buttonTint="#558B2F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"

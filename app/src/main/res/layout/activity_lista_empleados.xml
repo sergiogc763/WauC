@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/tvTituloListaEmpleados"
         android:layout_width="290dp"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="70dp"
@@ -19,7 +19,8 @@
         android:fontFamily="@font/acetone"
         android:paddingLeft="11dp"
         android:paddingTop="7dp"
-        android:text="LISTA DE EMPLEADOS"
+        android:paddingRight="11dp"
+        android:text="@string/tvTituloListaEmpleados"
         android:textAllCaps="true"
         android:textColor="#558b2F"
         android:textSize="36sp"

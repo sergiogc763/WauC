@@ -27,38 +27,39 @@
                 android:id="@+id/imgUsuario"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/recurso_ic_persona" />
+                app:srcCompat="@drawable/recurso_ic_persona"
+                tools:ignore="ContentDescription" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:orientation="vertical"
+                android:layout_alignParentTop="false"
                 android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@+id/imgUsuario">
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_toEndOf="@+id/imgUsuario"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/nomUsuarioLista"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="nombre"
+                    android:text="@string/nomUsuarioLista"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/dniUsuarioLista"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="dni"
-                    />
+                    android:text="@string/dniUsuarioLista"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -67,11 +68,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
+                android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
-                android:text="telefono"
+                android:text="@string/telUsuarioLista"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 

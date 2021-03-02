@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">WauC</string>
     <string name="title_activity_ver_movimientos">Map</string>
+    <string name="tvTituloIniciarCoordenadas">BIENVENIDO</string>
+    <string name="tvUsuarioActual">nombreUsuario</string>
+    <string name="tvDescripcionIniciarCoordenadas">Pulse el botón para iniciar el proceso de recogida de movimientos. Ten en cuenta que necesitarás tener el GPS iniciado. Al finalizar, vuelva a pulsar el botón que se encontrará de color rojo para poder finalizar con el proceso.</string>
+    <string name="btnServicio">INICIAR</string>
+    <string name="btnRegistrar">Registrarse</string>
+    <string name="btnAcceder">Acceder</string>
+    <string name="tvTituloListaEmpleados">LISTA DE EMPLEADOS</string>
+    <string name="tvTituloListaFechas">Fechas de movimientos</string>
+    <string name="etDniLogin">Introduzca DNI</string>
+    <string name="etPassLogin">Password</string>
+    <string name="btnEntrar">Entrar</string>
+    <string name="checkRecordatorio">Recordar DNI</string>
+    <string name="etNombreR">Nombre completo</string>
+    <string name="etPassR">Contraseña entre 4 y 8 dígitos</string>
+    <string name="etTelefonoR">Teléfono</string>
+    <string name="etDniR">DNI</string>
+    <string name="etPassRConfirmar">Confirmar contraseña</string>
+    <string name="btnRegistrarR">Registrar</string>
+    <string name="nomUsuarioLista">nombre</string>
+    <string name="dniUsuarioLista">dni</string>
+    <string name="telUsuarioLista">telefono</string>
+    <string name="itemFecha">fecha</string>
 </resources>

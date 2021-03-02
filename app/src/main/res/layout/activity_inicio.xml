@@ -15,7 +15,7 @@
         android:layout_marginBottom="132dp"
         android:background="@drawable/estilo_boton"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Registrarse"
+        android:text="@string/btnRegistrar"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="132dp"
         android:background="@drawable/estilo_boton"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Acceder"
+        android:text="@string/btnAcceder"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recurso_logo_secundario" />
+        app:srcCompat="@drawable/recurso_logo_secundario"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/imgErrores"
@@ -54,6 +55,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recurso_icono_ayuda" />
+        app:srcCompat="@drawable/recurso_icono_ayuda"
+        tools:ignore="ContentDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

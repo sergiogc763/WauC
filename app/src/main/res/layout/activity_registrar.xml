@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recurso_icono_registrar" />
+        app:srcCompat="@drawable/recurso_icono_registrar"
+        tools:ignore="ContentDescription"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -36,9 +37,11 @@
             android:layout_height="40dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_persona"
-            android:hint=" Nombre completo"
+            android:drawablePadding="5dp"
+            android:hint="@string/etNombreR"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:singleLine="true"
             android:textAllCaps="true"
             android:textSize="18sp" />
@@ -61,11 +64,12 @@
             android:layout_height="40dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_phone"
-            android:hint=" Teléfono"
+            android:drawablePadding="5dp"
+            android:hint="@string/etTelefonoR"
             android:inputType="phone"
             android:maxLength="9"
             android:paddingLeft="10dp"
-            android:phoneNumber="true"
+            android:paddingRight="10dp"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,10 +90,12 @@
             android:layout_height="40dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_dni"
-            android:hint=" DNI"
+            android:drawablePadding="5dp"
+            android:hint="@string/etDniR"
             android:inputType="textShortMessage"
             android:maxLength="9"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:singleLine="true"
             android:textAllCaps="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -112,11 +118,12 @@
             android:layout_height="40dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_pass"
-            android:hint=" Contraseña entre 4 y 8 dígitos"
+            android:drawablePadding="5dp"
+            android:hint="@string/etPassR"
             android:inputType="textPassword"
             android:maxLength="8"
             android:paddingLeft="10dp"
-            android:password="true"
+            android:paddingRight="10dp"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,11 +145,12 @@
             android:layout_height="40dp"
             android:background="@drawable/estilo_editext"
             android:drawableStart="@drawable/recurso_ic_pass"
-            android:hint=" Confirmar contraseña"
+            android:drawablePadding="5dp"
+            android:hint="@string/etPassRConfirmar"
             android:inputType="textPassword"
             android:maxLength="8"
             android:paddingLeft="10dp"
-            android:password="true"
+            android:paddingRight="10dp"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +163,7 @@
         android:layout_marginEnd="80dp"
         android:background="@drawable/estilo_boton"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Registrar"
+        android:text="@string/btnRegistrarR"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
