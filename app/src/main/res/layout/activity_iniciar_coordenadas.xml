@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/recurso_fondo_pantalla"
+    tools:context=".AplicacionEmpleado.IniciarCoordenadas">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="344dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="38dp"
+        android:fontFamily="@font/acetone"
+        android:gravity="center"
+        android:text="BIENVENIDO"
+        android:textAllCaps="true"
+        android:textColor="#558b2F"
+        android:textSize="75dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvUsuarioActual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUsuarioActual"
+        android:layout_width="232dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="42dp"
+        android:gravity="center"
+        android:text="nombreUsuario"
+        android:textSize="35sp"
+        android:textStyle="normal|italic"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="288dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="76dp"
+        android:text="Pulse el botón para iniciar el proceso de recogida
+        de movimientos. Ten en cuenta que necesitarás tener el GPS iniciado.
+        Al finalizar, vuelva a pulsar el botón que se encontrará de color rojo
+        para poder finalizar con el proceso."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsuarioActual" />
+
+    <Button
+        android:id="@+id/btnServicio"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="@drawable/estilo_btniniciarcoordenadas"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="INICIAR"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

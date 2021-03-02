@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutFecha"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/itemFecha"
+        android:layout_width="197dp"
+        android:layout_height="53dp"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"
+        android:background="@drawable/estilo_lista_fechas"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:text="fecha"
+        android:layout_margin="20dp"
+        android:textAllCaps="true"
+        android:textColor="#424242"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
