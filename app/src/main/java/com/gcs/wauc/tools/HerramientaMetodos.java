@@ -25,30 +25,29 @@ public class HerramientaMetodos {
     }
 
     /**
-     *  Método que utiliza las validaciones de números y de la letra del Dni
+     * Método que utiliza las validaciones de números y de la letra del Dni
      *
      * @param dni
      * @return boolean
      */
-    public boolean validarDNI(String dni){
+    public boolean validarDNI(String dni) {
 
         String letra = "";
 
-        if(dni.length() !=9 ||
-                !Character.isLetter(dni.charAt(8))){
+        if (dni.length() != 9 ||
+                !Character.isLetter(dni.charAt(8))) {
 
             return false;
 
-        }else{
+        } else {
 
             letra = dni.substring(8).toUpperCase();
 
-            if(numerosDNI(dni) && letraDNI(dni).equals(letra)){
+            if (numerosDNI(dni) && letraDNI(dni).equals(letra)) {
 
                 return true;
 
-            }
-            else{
+            } else {
 
                 return false;
 
@@ -62,21 +61,21 @@ public class HerramientaMetodos {
      * @param dni
      * @return boolean
      */
-    public boolean numerosDNI(String dni){
+    public boolean numerosDNI(String dni) {
 
         int i, x;
 
         String num = "";
         String dniFinal = "";
-        String[] numeros ={"0","1","2","3","4","5","6","7","8","9"};
+        String[] numeros = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-        for(i = 0; i< dni.length() -1 ;i++){
+        for (i = 0; i < dni.length() - 1; i++) {
 
-            num = dni.substring(i,i+1);
+            num = dni.substring(i, i + 1);
 
-            for(x = 0; x <numeros.length;x++){
+            for (x = 0; x < numeros.length; x++) {
 
-                if(num.equalsIgnoreCase(numeros[x])){
+                if (num.equalsIgnoreCase(numeros[x])) {
                     dniFinal += numeros[x];
                 }
 
@@ -84,9 +83,9 @@ public class HerramientaMetodos {
 
         }
 
-        if (dniFinal.length() !=8){
+        if (dniFinal.length() != 8) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -97,16 +96,16 @@ public class HerramientaMetodos {
      * @param dni
      * @return String
      */
-    public String letraDNI(String dni){
+    public String letraDNI(String dni) {
 
-        int numerosDni = Integer.parseInt(dni.substring(0,8));
+        int numerosDni = Integer.parseInt(dni.substring(0, 8));
 
         String letraFinal = "";
-        String[] letras = {"T","R","W","A","G","M","Y"
-                ,"F","P","D","X","B","N","J"
-                ,"Z","S","Q","V","H","L","C","K","E"};
+        String[] letras = {"T", "R", "W", "A", "G", "M", "Y"
+                , "F", "P", "D", "X", "B", "N", "J"
+                , "Z", "S", "Q", "V", "H", "L", "C", "K", "E"};
 
-        int res = numerosDni%23;
+        int res = numerosDni % 23;
 
         letraFinal = letras[res];
 
@@ -114,16 +113,14 @@ public class HerramientaMetodos {
     }
 
     /**
-     *
-     *
-     /**
+     * /**
      * Método utilizado para comprobar que los datos que se introducen en el formulario son correctos.
-     *     Controla:
-     *
-     *         - DNI. Comprueba que el DNI sea correcto y a su vez confirma que sea verdadero
-     *         - Teléfono. Comprueba que se introduce un teléfono con correcto formato
-     *         - Pass. Comprueba que la contraseña cumple los requisitos, en este caso que tenga mínimo
-     *         4 caracteres
+     * Controla:
+     * <p>
+     * - DNI. Comprueba que el DNI sea correcto y a su vez confirma que sea verdadero
+     * - Teléfono. Comprueba que se introduce un teléfono con correcto formato
+     * - Pass. Comprueba que la contraseña cumple los requisitos, en este caso que tenga mínimo
+     * 4 caracteres
      *
      * @param etDni
      * @param etNombre
@@ -132,7 +129,7 @@ public class HerramientaMetodos {
      * @param etPasswordConfirmar
      * @return boolean
      */
-    public boolean comprobarDatos(EditText etDni, EditText etNombre, EditText etTelefono, EditText etPassword, EditText etPasswordConfirmar){
+    public boolean comprobarDatos(EditText etDni, EditText etNombre, EditText etTelefono, EditText etPassword, EditText etPasswordConfirmar) {
 
         boolean flag;
 
@@ -142,44 +139,44 @@ public class HerramientaMetodos {
         String pass = etPassword.getText().toString();
         String passConfirmar = etPasswordConfirmar.getText().toString();
 
-        if( (!(dni.isEmpty() || dni.contentEquals(""))) && HerramientaMetodos.herramienta().validarDNI(dni) ){
-            if(!(nombre.isEmpty() || nombre.contentEquals(""))){
+        if ((!(dni.isEmpty() || dni.contentEquals(""))) && HerramientaMetodos.herramienta().validarDNI(dni)) {
+            if (!(nombre.isEmpty() || nombre.contentEquals(""))) {
 
-                if((!(telefono.isEmpty() || telefono.contentEquals(""))) && telefono.length() == 9){
+                if ((!(telefono.isEmpty() || telefono.contentEquals(""))) && telefono.length() == 9) {
 
-                    if( (!(pass.isEmpty() || pass.contentEquals(""))) &&
-                            (!(passConfirmar.isEmpty() || passConfirmar.contentEquals("")))){
+                    if ((!(pass.isEmpty() || pass.contentEquals(""))) &&
+                            (!(passConfirmar.isEmpty() || passConfirmar.contentEquals("")))) {
 
-                        if( (pass.length() >= 4) || (passConfirmar.length() >= 4)){
+                        if ((pass.length() >= 4) || (passConfirmar.length() >= 4)) {
 
-                                if(pass.contentEquals(passConfirmar)){
-                                    flag = true;
-                                }else{
-                                    etPasswordConfirmar.setError("Ambas contraseñas deben coincidir");
-                                    flag = false;
+                            if (pass.contentEquals(passConfirmar)) {
+                                flag = true;
+                            } else {
+                                etPasswordConfirmar.setError("Ambas contraseñas deben coincidir");
+                                flag = false;
 
-                                }
-                        }else{
+                            }
+                        } else {
                             etPassword.setError("La contraseña debe tener como mínimo 4 carateres");
                             flag = false;
                         }
 
-                    }else{
+                    } else {
                         etPassword.setError("Introduzca una contraseña valida");
                         flag = false;
                     }
 
-                }else{
+                } else {
                     etTelefono.setError("Introduzca un teléfono valido");
                     flag = false;
                 }
 
-            }else{
+            } else {
                 etNombre.setError("No se ha introducido ningún caracter. Por favor introduzca su nombre");
                 flag = false;
             }
 
-        }else{
+        } else {
             etDni.setError("DNI erroneo. Introduzca un DNI valido");
             flag = false;
         }
@@ -190,14 +187,14 @@ public class HerramientaMetodos {
 
 
     /**
-     *  Método que encripta la contraseña del usuario
+     * Método que encripta la contraseña del usuario
      *
      * @param datos
      * @param key
      * @return
      * @throws Exception
      */
-    public static String encriptar(String datos, String key) throws Exception{
+    public static String encriptar(String datos, String key) throws Exception {
         SecretKeySpec secretKey = generateKey(key);
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -207,13 +204,13 @@ public class HerramientaMetodos {
     }
 
     /**
-     *  Método que genera la key para la encriptación
+     * Método que genera la key para la encriptación
      *
      * @param password
      * @return
      * @throws Exception
      */
-    public static SecretKeySpec generateKey(String password) throws Exception{
+    public static SecretKeySpec generateKey(String password) throws Exception {
         MessageDigest sha = MessageDigest.getInstance("SHA-256");
         byte[] key = password.getBytes("UTF-8");
         key = sha.digest(key);
@@ -222,23 +219,21 @@ public class HerramientaMetodos {
     }
 
     /**
-     *  Método que genera un codigo aleatorio. Utilizado para generar una "key" para encriptar
+     * Método que genera un codigo aleatorio. Utilizado para generar una "key" para encriptar
      *
      * @return
      */
-    public static String generarPalabraKey(){
+    public static String generarPalabraKey() {
 
         String palabra = "";
-        int caracteres = (int)(Math.random()*20)+2;
-        for (int i=0; i<caracteres; i++){
-            int codigoAscii = (int)Math.floor(Math.random()*(122 -
-                    97)+97);
-            palabra = palabra + (char)codigoAscii;
+        int caracteres = (int) (Math.random() * 20) + 2;
+        for (int i = 0; i < caracteres; i++) {
+            int codigoAscii = (int) Math.floor(Math.random() * (122 -
+                    97) + 97);
+            palabra = palabra + (char) codigoAscii;
         }
         return palabra;
     }
-
-
 
 
 }

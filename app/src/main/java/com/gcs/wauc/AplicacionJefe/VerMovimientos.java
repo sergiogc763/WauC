@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.gcs.wauc.Aplicacion.Login;
 import com.gcs.wauc.Modelo.Movimiento;
 import com.gcs.wauc.R;
 import com.gcs.wauc.Retrofit.RestEngine;
@@ -54,10 +53,10 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
         movimientos = new ArrayList<>();
 
         Bundle parametros = this.getIntent().getExtras();
-        if(parametros !=null){
-              dniU =  parametros.getString("dniU");
-              fecha = parametros.getString("fecha");
-        }else{
+        if (parametros != null) {
+            dniU = parametros.getString("dniU");
+            fecha = parametros.getString("fecha");
+        } else {
             dniU = "error";
             fecha = "error";
         }
@@ -70,7 +69,7 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
         HashMap<String, String> map = new HashMap<>();
 
         map.put("dniU", dniU);
-        map.put("fecha",fecha);
+        map.put("fecha", fecha);
 
 
         Call<List<Movimiento>> call = retrofitInterface.movimientosUsuario(map);
@@ -79,16 +78,16 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
             @Override
             public void onResponse(Call<List<Movimiento>> call, Response<List<Movimiento>> response) {
 
-                Toast.makeText(VerMovimientos.this, "nº de movimientos: "+ response.body().size() ,Toast.LENGTH_LONG).show();
+                Toast.makeText(VerMovimientos.this, "nº de movimientos: " + response.body().size(), Toast.LENGTH_LONG).show();
 
                 movimientos.addAll(response.body());
 
-                for(int i =0; i < movimientos.size();i++){
+                for (int i = 0; i < movimientos.size(); i++) {
 
                     LatLng coordenadas = new LatLng(movimientos.get(i).getLatitud(), movimientos.get(i).getLongitud());
                     googleMap.addMarker(new MarkerOptions()
                             .position(coordenadas)
-                            .title("Movimiento nº "+(i+1) + " "+movimientos.get(i).getHora()));
+                            .title("Movimiento nº " + (i + 1) + " " + movimientos.get(i).getHora()));
 
                 }
 
@@ -104,8 +103,8 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
 
             @Override
             public void onFailure(Call<List<Movimiento>> call, Throwable t) {
-                Toast.makeText(VerMovimientos.this, "ERROR-> "+t
-                        ,Toast.LENGTH_LONG).show();
+                Toast.makeText(VerMovimientos.this, "ERROR-> " + t
+                        , Toast.LENGTH_LONG).show();
             }
         });
 
@@ -138,7 +137,6 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
         map.getUiSettings().setAllGesturesEnabled(false);
 
 
-
     }
 
 
@@ -146,7 +144,7 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if(!hasFocus){
+        if (!hasFocus) {
             finish();
         }
 

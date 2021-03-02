@@ -28,10 +28,10 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
 
-       precargaKey();
+        precargaKey();
 
         //Animacion logo
-        Animation animacion = AnimationUtils.loadAnimation(this,R.anim.animacion_splashscreen);
+        Animation animacion = AnimationUtils.loadAnimation(this, R.anim.animacion_splashscreen);
 
         logo = (ImageView) findViewById(R.id.logoSplash);
         logo.setAnimation(animacion);
@@ -50,12 +50,12 @@ public class SplashScreen extends AppCompatActivity {
     }
 
 
-    private void precargaKey(){
+    private void precargaKey() {
         SharedPreferences sp = this.getSharedPreferences("key", Context.MODE_PRIVATE);
 
         String key = sp.getString("key", "null");
 
-        if(key.contentEquals("null")){
+        if (key.contentEquals("null")) {
 
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("key", HerramientaMetodos.generarPalabraKey());
@@ -63,7 +63,6 @@ public class SplashScreen extends AppCompatActivity {
 
         }
     }
-
 
 
 }

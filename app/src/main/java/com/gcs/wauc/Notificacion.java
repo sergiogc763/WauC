@@ -17,7 +17,7 @@ public class Notificacion extends Application {
     }
 
     private void crearCanalNotificacion() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel canalServicio = new NotificationChannel(
                     CANAL_ID_NOTIFICACION,
                     "WauC-Servicio",
@@ -29,7 +29,6 @@ public class Notificacion extends Application {
             manager.createNotificationChannel(canalServicio);
         }
     }
-
 
 
 }

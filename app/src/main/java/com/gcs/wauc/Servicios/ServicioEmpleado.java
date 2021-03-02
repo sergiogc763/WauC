@@ -33,7 +33,8 @@ import retrofit2.Response;
 
 public class ServicioEmpleado extends Service {
 
-    private RetrofitInterface retrofitInterface = RestEngine.getRetrofit().create(RetrofitInterface.class);;
+    private RetrofitInterface retrofitInterface = RestEngine.getRetrofit().create(RetrofitInterface.class);
+    ;
 
     static String dniEmpleado;
 
@@ -50,7 +51,6 @@ public class ServicioEmpleado extends Service {
                 Date date = new Date();
                 //FECHA
                 formato = new SimpleDateFormat("yyyy-MM-dd");
-
                 String fecha = formato.format(date);
 
                 //HORA
@@ -58,14 +58,13 @@ public class ServicioEmpleado extends Service {
                 String hora = formato.format(date);
 
 
-
                 HashMap<String, String> map = new HashMap<>();
 
                 map.put("dniU", dniEmpleado);
-                map.put("fecha" , fecha);
-                map.put("hora" , hora);
-                map.put("latitud" , ""+latitud);
-                map.put("longitud" , ""+longitud);
+                map.put("fecha", fecha);
+                map.put("hora", hora);
+                map.put("latitud", "" + latitud);
+                map.put("longitud", "" + longitud);
 
 
                 Call<Void> call = retrofitInterface.registrarMovimiento(map);
@@ -115,7 +114,7 @@ public class ServicioEmpleado extends Service {
         startForeground(Constantes.ID_SERVICIO_LOCALIZACION, notificacion);
     }
 
-    private void pararServicio(){
+    private void pararServicio() {
 
         LocationServices.getFusedLocationProviderClient(this)
                 .removeLocationUpdates(locationCallback);
@@ -125,13 +124,13 @@ public class ServicioEmpleado extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent != null){
+        if (intent != null) {
             String accion = intent.getAction();
-            if(accion != null){
-                if(accion.equals(Constantes.START_SERVICIO_LOCALIZACION)){
+            if (accion != null) {
+                if (accion.equals(Constantes.START_SERVICIO_LOCALIZACION)) {
                     dniEmpleado = intent.getExtras().getString("dniUsuarioActual");
                     comenzarServicio();
-                }else if(accion.equals(Constantes.STOP_SERVICIO_LOCALIZACION)){
+                } else if (accion.equals(Constantes.STOP_SERVICIO_LOCALIZACION)) {
                     pararServicio();
                 }
             }

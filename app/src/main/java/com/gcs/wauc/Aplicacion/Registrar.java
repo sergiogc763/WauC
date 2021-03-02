@@ -61,8 +61,8 @@ public class Registrar extends AppCompatActivity {
                  * A su vez, comprobaremos que se introduce un DNI correcto y la contraseña
                  tenga entre 4 y 8 caracteres (tienen que coincidir las dos)
                  */
-                if(HerramientaMetodos.
-                        herramienta().comprobarDatos(etDni,etNombre,etTelefono,etPassword,etPasswordConfirmar)){
+                if (HerramientaMetodos.
+                        herramienta().comprobarDatos(etDni, etNombre, etTelefono, etPassword, etPasswordConfirmar)) {
 
                     /**
                      * Pasamos las variables a la petición mediante el body
@@ -77,11 +77,10 @@ public class Registrar extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    map.put("password" , pass);
-                    map.put("nombre" , etNombre.getText().toString().toUpperCase());
-                    map.put("telefono" , etTelefono.getText().toString());
-                    map.put("puesto" , "Empleado");
-
+                    map.put("password", pass);
+                    map.put("nombre", etNombre.getText().toString().toUpperCase());
+                    map.put("telefono", etTelefono.getText().toString());
+                    map.put("puesto", "Empleado");
 
 
                     Call<Void> call = retrofitInterface.registrarUsuario(map);
@@ -89,7 +88,7 @@ public class Registrar extends AppCompatActivity {
                         //Si la consulta ha funcionado correctamente ejecutará onResponse
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-                            Toast.makeText(Registrar.this, "SE HA REGISTRADO CORRECTAMENTE",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Registrar.this, "SE HA REGISTRADO CORRECTAMENTE", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(Registrar.this, Inicio.class);
                             startActivity(i);
                             finish();
@@ -98,12 +97,12 @@ public class Registrar extends AppCompatActivity {
                         //Si existe algún fallo en la consulta ejecutará onFailure
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(Registrar.this, "ERROR-> " + t.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(Registrar.this, "ERROR-> " + t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
 
-                }else{
-                    Toast.makeText(Registrar.this, "ERROR-> FALLO EN UNO DE LOS CAMPOS",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(Registrar.this, "ERROR-> FALLO EN UNO DE LOS CAMPOS", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -114,13 +113,13 @@ public class Registrar extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if(!hasFocus){
+        if (!hasFocus) {
             finish();
         }
 
     }
 
-    public String key(){
+    public String key() {
 
         SharedPreferences prefs =
                 getSharedPreferences("key", Context.MODE_PRIVATE);
@@ -130,8 +129,6 @@ public class Registrar extends AppCompatActivity {
         return key;
 
     }
-
-
 
 
 }

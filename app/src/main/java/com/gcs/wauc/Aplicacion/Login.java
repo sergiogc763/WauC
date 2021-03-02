@@ -24,7 +24,6 @@ import com.gcs.wauc.Retrofit.RetrofitInterface;
 import com.gcs.wauc.tools.HerramientaMetodos;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,9 +55,9 @@ public class Login extends AppCompatActivity {
         checkRecordatorio.setChecked(isChecked());
 
 
-        if(checkRecordatorio.isChecked()){
+        if (checkRecordatorio.isChecked()) {
             SharedPreferences prefs =
-                    getSharedPreferences("recordarDNI",Context.MODE_PRIVATE);
+                    getSharedPreferences("recordarDNI", Context.MODE_PRIVATE);
 
             String dni = prefs.getString("DNI", "");
             etDniLogin.setText(dni);
@@ -82,18 +81,18 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(checkRecordatorio.isChecked()){
+                if (checkRecordatorio.isChecked()) {
                     SharedPreferences prefs =
-                            getSharedPreferences("recordarDNI",Context.MODE_PRIVATE);
+                            getSharedPreferences("recordarDNI", Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putBoolean("cheked", true);
                     editor.putString("DNI", etDniLogin.getText().toString());
                     editor.commit();
 
-                }else{
+                } else {
                     SharedPreferences prefs =
-                            getSharedPreferences("recordarDNI",Context.MODE_PRIVATE);
+                            getSharedPreferences("recordarDNI", Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putBoolean("cheked", false);
@@ -106,7 +105,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void login(){
+    public void login() {
 
 
         HashMap<String, String> map = new HashMap<>();
@@ -126,8 +125,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
 
-                if(response.body()){
-                    Toast.makeText(Login.this, "ACCESO CONCEDIDO" ,Toast.LENGTH_LONG).show();
+                if (response.body()) {
+                    Toast.makeText(Login.this, "ACCESO CONCEDIDO", Toast.LENGTH_LONG).show();
                     HashMap<String, String> map = new HashMap<>();
 
                     map.put("DNI", etDniLogin.getText().toString());
@@ -135,13 +134,13 @@ public class Login extends AppCompatActivity {
                     call2.enqueue(new Callback<Usuario>() {
                         @Override
                         public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                            if(response.body().getPuesto().equalsIgnoreCase("Empleado")){
+                            if (response.body().getPuesto().equalsIgnoreCase("Empleado")) {
 
 
                                 Intent i = new Intent(Login.this, IniciarCoordenadas.class);
-                                i.putExtra("Empleado",response.body());
+                                i.putExtra("Empleado", response.body());
                                 startActivity(i);
-                            }else{
+                            } else {
                                 Intent i = new Intent(Login.this, ListaEmpleados.class);
                                 startActivity(i);
                             }
@@ -149,20 +148,20 @@ public class Login extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Usuario> call, Throwable t) {
-                            Toast.makeText(Login.this, "ERROR-> " + t.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "ERROR-> " + t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
 
-                }else{
+                } else {
                     Toast.makeText(Login.this, "ACCESO NO CONCEDIDO. DNI/CONTRASEÑA INCORRECTA"
-                            ,Toast.LENGTH_LONG).show();
+                            , Toast.LENGTH_LONG).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-                Toast.makeText(Login.this, "ERROR-> " + t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "ERROR-> " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -171,12 +170,12 @@ public class Login extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if(!hasFocus){
+        if (!hasFocus) {
             finish();
         }
     }
 
-    public String key(){
+    public String key() {
 
         SharedPreferences prefs =
                 getSharedPreferences("key", Context.MODE_PRIVATE);
@@ -187,11 +186,11 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public Boolean isChecked(){
+    public Boolean isChecked() {
 
         Boolean flag;
         SharedPreferences prefs =
-                getSharedPreferences("recordarDNI",Context.MODE_PRIVATE);
+                getSharedPreferences("recordarDNI", Context.MODE_PRIVATE);
         flag = prefs.getBoolean("cheked", false);
         return flag;
 

@@ -17,7 +17,7 @@ import com.gcs.wauc.R;
 
 import java.util.ArrayList;
 
-public class AdapterListaFechasEmpleado extends RecyclerView.Adapter{
+public class AdapterListaFechasEmpleado extends RecyclerView.Adapter {
 
     ArrayList<String> listaFechas;
     Context contexto;
@@ -34,7 +34,7 @@ public class AdapterListaFechasEmpleado extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_lista_fechas_empleado,null,false);
+                .inflate(R.layout.item_lista_fechas_empleado, null, false);
 
         return new AdapterListaFechasEmpleado.ViewHolderDatos(v);
     }
@@ -57,13 +57,13 @@ public class AdapterListaFechasEmpleado extends RecyclerView.Adapter{
                             @Override
                             public void onClick(DialogInterface dialog, int posicion) {
 
-                                if(posicion == 0){
+                                if (posicion == 0) {
                                     Intent i = new Intent(contexto, VerMovimientos.class);
-                                    i.putExtra("dniU",dniU);
-                                    i.putExtra("fecha",listaFechas.get(position));
+                                    i.putExtra("dniU", dniU);
+                                    i.putExtra("fecha", listaFechas.get(position));
                                     contexto.startActivity(i);
 
-                                }else if(posicion == 1){
+                                } else if (posicion == 1) {
                                     Toast.makeText(contexto, "OPERACION CANCELADA...", Toast.LENGTH_LONG).show();
 
                                 }

@@ -40,7 +40,7 @@ public class ListaEmpleados extends AppCompatActivity {
 
         recycler = findViewById(R.id.listaEmpleados);
         recycler.setLayoutManager
-                (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+                (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         //recycler.setHasFixedSize(true);
 
@@ -52,7 +52,7 @@ public class ListaEmpleados extends AppCompatActivity {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
 
                 listaUsuarios.addAll(response.body());
-                AdapterListaEmpleados adapter = new AdapterListaEmpleados(contexto,listaUsuarios);
+                AdapterListaEmpleados adapter = new AdapterListaEmpleados(contexto, listaUsuarios);
                 recycler.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

@@ -5,24 +5,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.gcs.wauc.Constantes;
 import com.gcs.wauc.R;
 import com.gcs.wauc.Modelo.Usuario;
 import com.gcs.wauc.Servicios.ServicioEmpleado;
-import com.google.android.gms.location.LocationServices;
 
 
 public class IniciarCoordenadas extends AppCompatActivity {
@@ -56,22 +50,22 @@ public class IniciarCoordenadas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(ContextCompat.checkSelfPermission(
+                if (ContextCompat.checkSelfPermission(
                         getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED){
+                ) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(
                             IniciarCoordenadas.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                             LOCATION_PERMISSION_REQUEST_CODE
                     );
-                } else{
-                    if(flagState == false){
+                } else {
+                    if (flagState == false) {
                         flagState = true;
                         btnServicio.setBackgroundResource(R.drawable.estilo_btnpararcoordenadas);
                         btnServicio.setText("PARAR");
                         comenzarServicio();
 
-                    }else if(flagState == true){
+                    } else if (flagState == true) {
                         flagState = false;
                         btnServicio.setText("INICIAR");
                         btnServicio.setBackgroundResource(R.drawable.estilo_btniniciarcoordenadas);
@@ -108,20 +102,20 @@ public class IniciarCoordenadas extends AppCompatActivity {
 
     public void comenzarServicio() {
 
-            Intent i = new Intent(getApplicationContext(), ServicioEmpleado.class);
-            i.setAction(Constantes.START_SERVICIO_LOCALIZACION);
-            i.putExtra("dniUsuarioActual", user.getDNI());
-            startService(i);
-            Toast.makeText(this, "PROCESO INICIADO. OBTENIENDO COORDENADAS", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getApplicationContext(), ServicioEmpleado.class);
+        i.setAction(Constantes.START_SERVICIO_LOCALIZACION);
+        i.putExtra("dniUsuarioActual", user.getDNI());
+        startService(i);
+        Toast.makeText(this, "PROCESO INICIADO. OBTENIENDO COORDENADAS", Toast.LENGTH_SHORT).show();
 
     }
 
     public void pararServicio() {
 
-            Intent i = new Intent(getApplicationContext(), ServicioEmpleado.class);
-            i.setAction(Constantes.STOP_SERVICIO_LOCALIZACION);
-            startService(i);
-            Toast.makeText(this, "PROCESO FINALIZADO", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getApplicationContext(), ServicioEmpleado.class);
+        i.setAction(Constantes.STOP_SERVICIO_LOCALIZACION);
+        startService(i);
+        Toast.makeText(this, "PROCESO FINALIZADO", Toast.LENGTH_SHORT).show();
 
     }
 

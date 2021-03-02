@@ -1,7 +1,6 @@
 package com.gcs.wauc.Modelo;
 
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -27,7 +26,7 @@ public class Movimiento implements Serializable {
     @SerializedName("longitud")
     private float longitud;
 
-    public Movimiento(){
+    public Movimiento() {
     }
 
     public Movimiento(String dniU, Date fecha, String hora, float latitud, float longitud) {

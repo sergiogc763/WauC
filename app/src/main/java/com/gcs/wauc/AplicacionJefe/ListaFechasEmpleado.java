@@ -43,16 +43,16 @@ public class ListaFechasEmpleado extends AppCompatActivity {
 
 
         Bundle parametros = this.getIntent().getExtras();
-        if(parametros !=null){
+        if (parametros != null) {
             user = (Usuario) parametros.getSerializable("DatosEmpleado");
-        }else{
+        } else {
             user = new Usuario();
         }
 
 
         recycler = findViewById(R.id.listaFechas);
         recycler.setLayoutManager
-                (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+                (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.setHasFixedSize(true);
 
         HashMap<String, String> map = new HashMap<>();
@@ -67,7 +67,7 @@ public class ListaFechasEmpleado extends AppCompatActivity {
 
                 listaFechas.addAll(response.body());
 
-                AdapterListaFechasEmpleado adapter = new AdapterListaFechasEmpleado(contexto,listaFechas,user.getDNI());
+                AdapterListaFechasEmpleado adapter = new AdapterListaFechasEmpleado(contexto, listaFechas, user.getDNI());
                 recycler.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
@@ -75,8 +75,8 @@ public class ListaFechasEmpleado extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                Toast.makeText(ListaFechasEmpleado.this, "ERROR-> "+t
-                        ,Toast.LENGTH_LONG).show();
+                Toast.makeText(ListaFechasEmpleado.this, "ERROR-> " + t
+                        , Toast.LENGTH_LONG).show();
             }
         });
 

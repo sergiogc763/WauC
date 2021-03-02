@@ -33,16 +33,16 @@ public class AdapterListaEmpleados extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list_empleados,null,false);
+                .inflate(R.layout.item_list_empleados, null, false);
 
         return new ViewHolderDatos(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            ((ViewHolderDatos) holder).asignarDatos(listaUsuarios.get(position));
+        ((ViewHolderDatos) holder).asignarDatos(listaUsuarios.get(position));
 
-            ((ViewHolderDatos) holder).layout.setOnClickListener(new View.OnClickListener() {
+        ((ViewHolderDatos) holder).layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -54,25 +54,25 @@ public class AdapterListaEmpleados extends RecyclerView.Adapter {
                 opciones[2] = "Cancelar";
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(contexto);
-                builder.setTitle("Opciones: "+listaUsuarios.get(position).getNombre())
+                builder.setTitle("Opciones: " + listaUsuarios.get(position).getNombre())
                         .setItems(opciones, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int posicion) {
 
-                                if(posicion == 0){
+                                if (posicion == 0) {
                                     Intent i = new Intent(contexto, ListaFechasEmpleado.class);
-                                    i.putExtra("DatosEmpleado",listaUsuarios.get(position));
+                                    i.putExtra("DatosEmpleado", listaUsuarios.get(position));
                                     contexto.startActivity(i);
 
-                                }else if(posicion == 1){
+                                } else if (posicion == 1) {
                                     String telefono = String.valueOf(listaUsuarios.get(position).getTelefono());
-                                    String dial = "tel:+34" +telefono ;
+                                    String dial = "tel:+34" + telefono;
                                     Intent i = new Intent(android.content.Intent.ACTION_DIAL,
                                             Uri.parse(dial)); //
                                     contexto.startActivity(i);
 
 
-                                }else if(posicion == 2){
+                                } else if (posicion == 2) {
                                     Toast.makeText(contexto, "OPERACION CANCELADA...", Toast.LENGTH_LONG).show();
                                 }
 
@@ -90,7 +90,7 @@ public class AdapterListaEmpleados extends RecyclerView.Adapter {
         return listaUsuarios.size();
     }
 
-    public class ViewHolderDatos extends RecyclerView.ViewHolder{
+    public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
         TextView nombreE, telefonoE, dniE;
         View layout;
@@ -105,7 +105,7 @@ public class AdapterListaEmpleados extends RecyclerView.Adapter {
 
         public void asignarDatos(Usuario usuario) {
             nombreE.setText(usuario.getNombre());
-            telefonoE.setText(usuario.getTelefono()+"");
+            telefonoE.setText(usuario.getTelefono() + "");
             dniE.setText(usuario.getDNI());
         }
 
