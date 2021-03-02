@@ -16,7 +16,7 @@ import com.gcs.wauc.R;
  * Registrarse en la aplicación o Entrar/Logear dentro de esta
  *
  * @author: Sergio García Calzada
- * @version: 25/02/2021
+ * @version: 01/02/2021
  */
 
 public class Inicio extends AppCompatActivity {
