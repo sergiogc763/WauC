@@ -30,23 +30,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Actividad final de los Jefes
+ * <p>
+ * En esta actividad el usuario puede ver exactamente por que zonas ha estado el contagiado.
+ * Con dicha información puede deducir que empleados y zonas han podido encontrarse más expuestas.
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class VerMovimientos extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
-    ArrayList<Movimiento> movimientos;
-    String dniU;
-    String fecha;
+    private ArrayList<Movimiento> movimientos;
+    private String dniU;
+    private String fecha;
     private RetrofitInterface retrofitInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_movimientos);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
 
         retrofitInterface = RestEngine.getRetrofit().create(RetrofitInterface.class);
 
@@ -66,19 +76,20 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
         HashMap<String, String> map = new HashMap<>();
 
         map.put("dniU", dniU);
         map.put("fecha", fecha);
 
 
-        Call<List<Movimiento>> call = retrofitInterface.movimientosUsuario(map);
+        Call<List<Movimiento>> call = retrofitInterface.movimientosEmpleado(map);
         call.enqueue(new Callback<List<Movimiento>>() {
 
             @Override
             public void onResponse(Call<List<Movimiento>> call, Response<List<Movimiento>> response) {
 
-                Toast.makeText(VerMovimientos.this, "nº de movimientos: " + response.body().size(), Toast.LENGTH_LONG).show();
+                Toast.makeText(VerMovimientos.this, "Nº de movimientos: " + response.body().size(), Toast.LENGTH_LONG).show();
 
                 movimientos.addAll(response.body());
 
@@ -87,17 +98,10 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
                     LatLng coordenadas = new LatLng(movimientos.get(i).getLatitud(), movimientos.get(i).getLongitud());
                     googleMap.addMarker(new MarkerOptions()
                             .position(coordenadas)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                             .title("Movimiento nº " + (i + 1) + " " + movimientos.get(i).getHora()));
 
                 }
-
-/*
-                Instant instant = response.body().getFecha().toInstant();
-                ZoneId z = ZoneId.of( "Europe/Madrid" );
-                ZonedDateTime zdt = instant.atZone( z );
-
-                Toast.makeText(VerMovimientos.this, ""+zdt
-                        ,Toast.LENGTH_LONG).show();*/
 
             }
 
@@ -120,6 +124,8 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
                 .image(BitmapDescriptorFactory.fromResource(R.raw.mapa))
                 .position(ubicacionEmpresa, 20f, 50f).bearing(-15);
 
+        mMap.setLatLngBoundsForCameraTarget(ubicacionMedida);
+
         mMap.addGroundOverlay(imagenEstructura);
 
         camaraFoco(-15f, ubicacionEmpresa, mMap);
@@ -132,11 +138,8 @@ public class VerMovimientos extends FragmentActivity implements OnMapReadyCallba
                 .bearing(bearing).tilt(0f).zoom(20.65f).build();
         map.moveCamera(CameraUpdateFactory.newCameraPosition(currentPlace));
 
-        map.setMinZoomPreference(20.30f);
-        map.setMaxZoomPreference(20.55f);
-        map.getUiSettings().setAllGesturesEnabled(false);
-
-
+        map.setMinZoomPreference(20.25f);
+        map.setMaxZoomPreference(21.25f);
     }
 
 

@@ -4,6 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+/**
+ * Clase objeto Usuario
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class Usuario implements Serializable {
 
     @SerializedName("DNI")

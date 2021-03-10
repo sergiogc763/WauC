@@ -22,12 +22,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Actividad segundoa de los Jefes
+ * En dicha actividad el usuario podrá ver todas las fechas que un Empleado tiene.
+ * Dicchas fechas hace referencia al día en el que se recogieron los datos/movimientos del Empleado.
+ * Al puslsar sobre una de ellas, redirige a la acticdad VerMovimientos, donde el usuario podrá
+ * ver en un mapa los movimientios/coordernadas por donde ha estado dentro de la empresa.
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class ListaFechasEmpleado extends AppCompatActivity {
 
-    Usuario user;
-    RecyclerView recycler;
-    Context contexto;
-    ArrayList<String> listaFechas;
+    private Usuario user;
+    private RecyclerView recycler;
+    private Context contexto;
+    private ArrayList<String> listaFechas;
 
     //RETROFIT
     private RetrofitInterface retrofitInterface;
@@ -60,7 +70,7 @@ public class ListaFechasEmpleado extends AppCompatActivity {
         map.put("dniU", user.getDNI());
 
 
-        Call<List<String>> call = retrofitInterface.fechasUsuario(map);
+        Call<List<String>> call = retrofitInterface.fechasEmpleado(map);
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {

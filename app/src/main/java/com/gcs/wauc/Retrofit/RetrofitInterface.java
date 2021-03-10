@@ -13,6 +13,12 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
+/**
+ * Interfaz que contiene los métodos para las consultas que se realiza a la API REST
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public interface RetrofitInterface {
 
 
@@ -26,16 +32,16 @@ public interface RetrofitInterface {
     Call<Usuario> buscarUsuarioDNI(@Body HashMap<String, String> map);
 
     @GET("/usuarios")
-    Call<List<Usuario>> listaUsuarios();
+    Call<List<Usuario>> listaEmpleados();
 
     @POST("/usuario/registrarMovimiento")
     Call<Void> registrarMovimiento(@Body HashMap<String, String> map);
 
     @POST("/usuario/fechasUsuario")
-    Call<List<String>> fechasUsuario(@Body HashMap<String, String> map);
+    Call<List<String>> fechasEmpleado(@Body HashMap<String, String> map);
 
     @POST("/usuario/movimientosUsuario")
-    Call<List<Movimiento>> movimientosUsuario(@Body HashMap<String, String> map);
+    Call<List<Movimiento>> movimientosEmpleado(@Body HashMap<String, String> map);
 
 
 }

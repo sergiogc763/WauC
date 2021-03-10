@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gcs.wauc.Constantes;
 import com.gcs.wauc.R;
 import com.gcs.wauc.Retrofit.RestEngine;
 import com.gcs.wauc.Retrofit.RetrofitInterface;
@@ -22,12 +23,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Clase que dará la opción de registrarse dentro de la aplicación como Empleado.
+ * (Actualmente no existe la forma de registrarse directamente como Jefe)
+ * <p>
+ * Se controla que en cada campo se cumpla las reglas establecidas, ya sea utilizar datos correctos,
+ * el DNI analiza si es correcto, la pass controla que sea más de 4 dígitos pero como máximo 8 y que
+ * coincida con la contraseña de confirmación,... Actualmente se utiliza cifrado de contraseñas
+ * utilizando instancia de SHA-256 y algoritmo AES
+ * <p>
+ * Cada usuario tendrá su probpia clave de encriptación
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class Registrar extends AppCompatActivity {
 
     private Button btnRegistrarUsuario;
     private EditText etNombre, etTelefono, etDni, etPassword, etPasswordConfirmar;
 
-    static String pass;
+    private String pass;
 
 
     //RETROFIT
@@ -72,7 +87,7 @@ public class Registrar extends AppCompatActivity {
                     map.put("DNI", etDni.getText().toString().toUpperCase());
 
                     try {
-                        pass = HerramientaMetodos.encriptar(etPassword.getText().toString(), key());
+                        pass = HerramientaMetodos.encriptar(etPassword.getText().toString(), Constantes.KEY);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -119,6 +134,11 @@ public class Registrar extends AppCompatActivity {
 
     }
 
+    /**
+     * Método que recupera la clave de encriptación personal
+     *
+     * @return
+     */
     public String key() {
 
         SharedPreferences prefs =

@@ -19,6 +19,10 @@ import com.gcs.wauc.Modelo.Usuario;
 
 import java.util.ArrayList;
 
+
+/**
+ * Clase adaptadora para la Lista de los Empleados
+ */
 public class AdapterListaEmpleados extends RecyclerView.Adapter {
 
     ArrayList<Usuario> listaUsuarios;

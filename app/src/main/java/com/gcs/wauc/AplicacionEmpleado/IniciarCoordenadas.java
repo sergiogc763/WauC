@@ -18,7 +18,17 @@ import com.gcs.wauc.R;
 import com.gcs.wauc.Modelo.Usuario;
 import com.gcs.wauc.Servicios.ServicioEmpleado;
 
-
+/**
+ * Actividad principal de los Empleados
+ * <p>
+ * Actualmente solo tiene la opción de iniciar el servicio de recuperación de movimientos o parar
+ * dicho servicio. Al pulsar el botón iniciará el Servicio-> ServicioEmpleado
+ * <p>
+ * Además al pulsar dicho botón se pedirá la confirmación de los permisos para GPS
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class IniciarCoordenadas extends AppCompatActivity {
 
     private TextView tvNomUsuarioActual;

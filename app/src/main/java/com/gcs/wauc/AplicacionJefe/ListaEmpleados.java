@@ -19,11 +19,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Primera actividad que aprecia los usuarios/clientes con el puesto/"rol" de Jefe
+ * En dicha actividad podrán ver una lista con todos los empleados que disponen.
+ * Al pulsar sobre uno de ellos aparecerá una ventana con diferentes opciones, ya ser ver las fechas
+ * en las que el empleado tiene movimientos o llamar al empleado directamente
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class ListaEmpleados extends AppCompatActivity {
 
-    ArrayList<Usuario> listaUsuarios;
-    RecyclerView recycler;
-    Context contexto;
+    private ArrayList<Usuario> listaUsuarios;
+    private RecyclerView recycler;
+    private Context contexto;
 
     //RETROFIT
     private RetrofitInterface retrofitInterface;
@@ -33,7 +42,6 @@ public class ListaEmpleados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_empleados);
-
         contexto = this;
 
         retrofitInterface = RestEngine.getRetrofit().create(RetrofitInterface.class);
@@ -46,7 +54,7 @@ public class ListaEmpleados extends AppCompatActivity {
 
         listaUsuarios = new ArrayList<>();
 
-        Call<List<Usuario>> call = retrofitInterface.listaUsuarios();
+        Call<List<Usuario>> call = retrofitInterface.listaEmpleados();
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {

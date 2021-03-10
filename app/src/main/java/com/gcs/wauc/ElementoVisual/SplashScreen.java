@@ -16,6 +16,13 @@ import com.gcs.wauc.Aplicacion.Inicio;
 import com.gcs.wauc.R;
 import com.gcs.wauc.tools.HerramientaMetodos;
 
+/**
+ * Actividad Main de la aplicación.
+ * Tiene la función de mostrar el logo de la aplicación utilizando SpashScreen
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class SplashScreen extends AppCompatActivity {
 
     private ImageView logo;

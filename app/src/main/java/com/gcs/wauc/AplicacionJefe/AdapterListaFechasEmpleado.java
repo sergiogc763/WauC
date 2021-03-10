@@ -17,6 +17,9 @@ import com.gcs.wauc.R;
 
 import java.util.ArrayList;
 
+/**
+ * Clase adaptadora para la Lista de las fechas de los movimientos que tiene el Empleado
+ */
 public class AdapterListaFechasEmpleado extends RecyclerView.Adapter {
 
     ArrayList<String> listaFechas;

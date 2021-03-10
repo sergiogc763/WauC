@@ -12,11 +12,11 @@ import android.widget.ImageView;
 import com.gcs.wauc.R;
 
 /**
- * Esta clase dará dos opciones al usuario.
+ * Clase que dará dos opciones al usuario.
  * Registrarse en la aplicación o Entrar/Logear dentro de esta
  *
+ * @version BetaV1.5 04/03/2021
  * @author: Sergio García Calzada
- * @version: 01/02/2021
  */
 
 public class Inicio extends AppCompatActivity {

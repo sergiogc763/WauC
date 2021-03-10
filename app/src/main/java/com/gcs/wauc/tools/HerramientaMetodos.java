@@ -10,8 +10,11 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * La clase HerramientaMetodos nace con la necesidad de modular la aplicación, y crear un única
- * clase que contenga herramientas de validación de datos (en este caso el DNI), dar formato fechas,...
+ * Clase que contiene varios métodos para comprobación y validación de datos, realizar los métodos
+ * de ecriptación de las contraseñas, generar la key para encriptar,...
+ *
+ * @author: Sergio García Calzada
+ * @version BetaV1.5 04/03/2021
  */
 public class HerramientaMetodos {
 

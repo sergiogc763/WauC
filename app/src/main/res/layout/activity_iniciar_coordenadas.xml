@@ -19,7 +19,7 @@
         android:text="@string/tvTituloIniciarCoordenadas"
         android:textAllCaps="true"
         android:textColor="#558b2F"
-        android:textSize="75dp"
+        android:textSize="75sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvUsuarioActual"
         app:layout_constraintEnd_toEndOf="parent"

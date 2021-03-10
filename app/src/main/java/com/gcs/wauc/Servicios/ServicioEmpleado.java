@@ -30,14 +30,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+/**
+ * Clase que extiende de la interfaz Service.
+ * <p>
+ * Será nuestro servicio principal para aquellos usuarios que sean Empleados.
+ * La función de este servicio será obtener de forma continua cada X tiempo las coordernadas donde
+ * se encuentra en ese momento el usuario. A su vez, al obtener unas coorderandas/movimientos se
+ * introduce directamente en la Base de datos.
+ * Además creamos una notificación que podrá ver el usuario mientras la aplicación se encuentra en
+ * segundo plano.
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
+ */
 public class ServicioEmpleado extends Service {
 
     private RetrofitInterface retrofitInterface = RestEngine.getRetrofit().create(RetrofitInterface.class);
-    ;
 
-    static String dniEmpleado;
+    private static String dniEmpleado;
 
+    /**
+     * Método que detecta cada cambio de ubicación que se realiza cada un X tiempo determinado.
+     * Despues de obtener la coordenada se introduce en la Base de Datos
+     */
     private LocationCallback locationCallback = new LocationCallback() {
 
         @Override
@@ -106,14 +121,20 @@ public class ServicioEmpleado extends Service {
                 .build();
 
         LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(5000);//300000
-        locationRequest.setFastestInterval(2000);//60000
+        /**
+         * Tiempo con el que realiza cada obtención de la ubicación
+         */
+        locationRequest.setInterval(10000);//300000
+        locationRequest.setFastestInterval(4000);//60000
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
         startForeground(Constantes.ID_SERVICIO_LOCALIZACION, notificacion);
     }
 
+    /**
+     * Método utilizado para parar el servicio
+     */
     private void pararServicio() {
 
         LocationServices.getFusedLocationProviderClient(this)

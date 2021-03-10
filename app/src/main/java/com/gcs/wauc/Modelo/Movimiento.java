@@ -7,7 +7,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Entidad Movimiento
+ * Clase objeto Movimiento
+ *
+ * @version BetaV1.5 04/03/2021
+ * @author: Sergio García Calzada
  */
 public class Movimiento implements Serializable {
 
